@@ -1,0 +1,62 @@
+from django.contrib import admin
+from django.urls import path, include
+from home import views
+
+
+
+
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('cart', views.cart_page, name="cart"),
+    path('addToCart/<int:id>/<int:qty>',views.add_cart,name='add_cart'),
+    path('removeItem/<int:id>',views.removeItem_cart,name="destroycart"),
+    path('clearCart',views.destroyCart,name="destroy-cart"),
+    path('recent-orders',views.recentOrders,name="recentOrders"),
+    # path('subcategory/<int:id>',views.subcategory,name="subcategory"),
+    # path('product-details/<int:id>', views.product_details, name="product-details"),
+    path('category=<str:name>',views.subcategory,name="subcategory"),
+    path('category=<str:cat>/product=<str:name>', views.product_details, name="product-details"),
+    path('about', views.about, name="about"),
+    path('checkout', views.checkout, name="checkout"),
+    path('contact', views.contact, name="contact"),
+    path('saveContact',views.saveContact,name="saveContact"),
+    path('login', views.login, name="login"),
+    path('register', views.register, name="register"),
+    # path('otp',views.OTP_Verification),
+    # path('resend-otp',views.OTP_Resend),
+    path('service', views.service, name="service"),
+    path('wishlist', views.wishlist, name="wishlist"),
+    path("404",views.error, name="404"),
+    path('save_data',views.save_data,name="save_data"),
+    path('validate_user',views.validate_user,name="validate_user"),
+    path('otp',views.otp,name="otp"),
+    path('resend-otp',views.resend_otp,name="resend_otp"),
+    path('validate_otp',views.validate_otp,name="validate_otp"),
+    path('send_otp',views.send_otp,name="send_otp"),
+    path('logout',views.logout,name="logout"),
+    path('profile',views.profile,name="profile"),
+    path('update_profile',views.update_profile,name="update_profile"),
+    path('placeorder',views.placeorder,name="placeorder"),
+    path('address',views.address,name="address"),
+    path('saveaddress',views.saveaddress,name="saveaddress"),
+    path('thanku',views.thanku,name="thanku"),
+    path('orderhistory',views.orderhistory,name="orderhistory"),
+    path('order',views.order,name="order"),
+    path('orderdetails/<int:id>',views.orderdetails,name="orderdetails"),
+    path('feedback/<int:id>/<int:id2>',views.feedback,name="feedback"),
+    path('send_feed/<int:id>/<int:id2>',views.send_feed,name="send_feed"),
+    path('updatefeedback',views.updatefeedback,name="updatefeedback"),
+    path('paypal/', include('paypal.standard.ipn.urls')),
+    path('invoice/<int:id>', views.invoice, name='download_invoice'),
+    path('pay_pal', views.paypal, name='paypal'),
+    path('process_payment/', views.process_payment, name='process_payment'),
+    path('delete_order/<int:id>',views.delete_order,name="deleteorder"),
+    path('customer', views.get_data, name="getdata"),
+    path('update', views.update_profile, name='updateprofile'),
+    path('user_data/<int:id>',views.user_data,name="userdata"),
+    path('address_data', views.address_list, name='address_data'),
+    path('search', views.search,name='search'),
+    path('search_get', views.search_food,name='search_get'),
+
+]

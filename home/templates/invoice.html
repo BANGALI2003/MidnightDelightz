@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-details p {
+            margin: 5px 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .invoice-table th,
+        .invoice-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .invoice-total {
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <h2>Invoice</h2>
+        </div>
+        <div class="invoice-details">
+            <p><strong>Order ID:</strong> {{ orderid }}</p>
+            <p><strong>Date:</strong> {{ dat }}</p>
+            <p><strong>Delivery Address:</strong> {{ daddress }}</p>
+            <p><strong>Current Date:</strong> {{ dateq }}</p>
+        </div>
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+<!--                    <th>Price</th>-->
+                </tr>
+            </thead>
+            {% for item in cart %}
+
+            <tbody>
+
+                <tr>
+                    <td>{{ item.Food_Item_Name }}</td>
+                    <td>{{ item.Quantity }}</td>
+<!--                    <td>{{ item.totalprice }}</td>-->
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="invoice-total">
+            <p><strong>Total Amount:</strong> {{ carttotal }}</p>
+        </div>
+    </div>
+</body>
+</html>

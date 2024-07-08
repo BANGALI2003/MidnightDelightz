@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+{% load static %}
+<html  class="no-js" lang="en">
+
+<!-- Mirrored from blackberrybd.com/foodbar/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jan 2024 14:46:22 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Midnight Delights</title>
+	<link rel="icon" href="{% static 'assets/img/logo-meta.png' %}" type="image/gif" sizes="16x16">
+	<link rel="icon" href="{% static 'assets/img/logo-meta.png' %}" type="image/gif" sizes="18x18">
+	<link rel="icon" href="{% static 'assets/img/logo-meta.png' %}" type="image/gif" sizes="20x20">
+	<link rel="stylesheet" href=" {% static 'assets/css/bootstrap.min.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/fontawesome.all.min.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/owl.carousel.min.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/owl.theme.default.min.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/slick.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/slick-theme.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/animate.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/normalize.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/mega-menu.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/jquery-ui.min.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/defult.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/style.css' %} ">
+	<link rel="stylesheet" href=" {% static 'assets/css/responsive.css' %} ">
+
+</head>
+<body>
+	<div id="preloader">
+		<div class="loader">
+	      <span class="loader-inner-1"></span>
+	      <span class="loader-inner-2"></span>
+	      <span class="loader-inner-3"></span>
+	      <span class="loader-inner-4"></span>
+		</div>
+	</div>
+	<header class="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-2 col-lg-2 align-self-center">
+						<div class="logo logo-d-none">
+							<a href="{% url 'index' %}"><img src=" {% static 'assets/img/logo-navbar.png' %} " height="100" width="200" alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-xl-7 col-lg-7 col-md-8 col-sm-6 col-2 align-self-center">
+						<div class="d-none d-lg-block">
+							<div class="header-menu">
+								<!--AkHAN THEKE MENU KAJ SURU-->
+								<div class="header-horizontal-menu">
+									<ul class="menu-content">
+										<li><a href="/">Home</a>
+										</li>
+										<li><a href="about">About</a></li>
+										<li><a href="contact">Contact</a></li>
+										<li><a href="service">Service</a></li>
+
+										{% if request.session.username %}
+										<li><a href="logout">Logout</a></li>
+										{% else %}
+										<li><a href="login">Login</a></li>
+										{% endif %}
+									</ul>
+								</div>
+							</div> <!-- header menu -->
+						</div> <!-- desktop nav -->
+						<!--Mobile Nav Menu-->
+						<div class="d-lg-none">
+							<!--Bar-->
+							<div class="logo mobile-bar-logo">
+								<a href=""><img src=" {% static 'assets/img/logo-navbar.png' %} " height="150" width="280" alt="logo"></a>
+							</div> <!-- mobile logo -->
+							<div class="mobile-toggle">
+								<a class="mobile-menu-open" href="javascript:void(0)"><i
+										class="fas fa-bars"></i></a>
+							</div>
+							<div class="mobile-off-canvas-menu">
+								<div class="logo">
+									<a href="/"><img src=" {% static 'assets/img/logo-navbar.png' %} " height="150" width="280" alt="logo"></a>
+								</div> <!-- mobile logo -->
+								<div class="mobile-canvas-close close-mobile-menu">
+									<p>Menu <i class="fas fa-arrow-left"></i></p>
+								</div>
+								<div class="mobile-main-menu">
+									<ul class="menu-content">
+										<li class="menu-item-has-children active"><a href="{% url 'index' %}">Home</a>
+											<!--				                            <ul class="sub-menu">-->
+											<!--&lt;!&ndash;				                                <li><a href="index">Home 01</a></li>&ndash;&gt;-->
+											<!--&lt;!&ndash;				                                <li><a href="index2.html">Home 02</a></li>&ndash;&gt;-->
+											<!--				                            </ul>-->
+										</li>
+										<li><a href="about">About</a></li>
+										<li><a href=" contact ">Contact</a></li>
+									</ul>
+
+								</div> <!-- mobile main menu -->
+							</div> <!-- mobile off canvas menu -->
+
+							<div class="overlay"></div>
+
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-10  align-self-center">
+						<div class="list-area-cart-user">
+							<ul>
+								<li><a href="javascript:void(0)" id="search-btn"><i class="fas fa-search"></i></a></li>
+								<li><a href=" wishlist "><i class="far fa-heart"></i>
+									{% if request.session.username %}
+										<span>5</span></a>
+									{% else %}
+										<span>0</span></a>
+									{% endif %}
+								</li>
+								
+								<li><a href="javascript:void(0)" id="cart-btn"><i class="fas fa-cart-arrow-down"></i>
+									{% if request.session.username %}	
+									<span>{{ cart_count }}</span></a>
+									{% else %}
+									<span>0</span></a>
+									{% endif %}
+								</li>
+								{% if request.session.username %}
+								<li><a href="/profile" id="login-btn"><i class="fas fa-user"></i></a>
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+						<form action="/search_get" class="search-form" method="post">
+							{% csrf_token %}
+							<input type="text" class="form-control" name="search" id="search-box" placeholder="search here...">
+							<button class="fas fa-search"></button>
+						</form>
+						<div class="mini-cart-side">
+							<div class="cart-header">
+								<h4>Shopping Cart</h4>
+								<div class="clse">
+									<a href="#" id="close-btn"><i class="fas fa-times"></i></a>
+								</div>
+							</div>
+							{% comment %} <div class="shopping-box ">
+								<img src=" {% static 'assets/img/minicart/1.png' %} " alt="png">
+								<div class="box-content">
+									<h5>Italian cuisine</h5>
+									<span>$600X2</span>
+								</div>
+								<div class="remove">
+									<a href="#"><i class="fas fa-times"></i></a>
+								</div>
+							</div>
+							<div class="shopping-box ">
+								<img src=" {% static 'assets/img/minicart/2.png' %} " alt="png">
+								<div class="box-content">
+									<h5>Japani Pizza</h5>
+									<span>$600X2</span>
+								</div>
+								<div class="remove">
+									<a href="#"><i class="fas fa-times"></i></a>
+								</div>
+							</div>
+							<div class="shopping-box ">
+								<img src=" {% static 'assets/img/minicart/3.png' %} " alt="png">
+								<div class="box-content">
+									<h5>Barcon Pizza</h5>
+									<span>$600X2</span>
+								</div>
+								<div class="remove">
+									<a href="#"><i class="fas fa-times"></i></a>
+								</div>
+							</div>
+							<div class="min-price">
+								<h4>subtotal:</h4>
+								<span>$5550</span>
+							</div> {% endcomment %}
+							{% if request.session.username %}
+							<div class="button-bar pt-20 text-center">
+								<a href="cart" class="btn btn-lg">
+									<span>View Cart</span>
+								</a>
+							</div>
+							{% else %}
+							<div class="button-bar pt-20 text-center">
+								<a href="login" class="btn btn-lg">
+									<span>Login</span>
+								</a>
+							</div>
+							{% endif %}
+						</div>
+						<div class="login-form">
+							<div class="form-container">
+								<div class="close-lgn">
+									<a href="javascript:void(0)" id="close-login"><i class="fas fa-times"></i></a>
+								</div>
+								<a href="profile">
+								<div class="form-icon"><i class="fa fa-user"></i></div>
+									</a>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="home-page home-img" style="background: url(' {% static 'assets/img/banner/page.jpg' %} ');">
+	 	<div class="container">
+	 		<div class="row">
+	 			<div class="col-lg-12">
+	 				<div class="page-content">
+	 					<div class="page-text">
+	 						<h4>Wellcome to Midnight Delights</h4>
+		 			   		 <h2>Your Orders</h2>
+	 					</div>
+	 					<div class="page-add">
+	 						<ul>
+	 							<li ><a class="page-active" href="/">Home</a></li>
+	 							<li><a href="">Recent Orders</a></li>
+	 						</ul>
+	 					</div>
+	 				</div>
+
+	 			</div>
+	 		</div>
+	 	</div>
+ </section>  
+ <div class="cart-page section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="table_page table-responsive ">
+						<table class="cart-tabel">
+							<thead>
+								<tr>
+									<th class="product_thumb">Order ID</th>
+									<th class="product_name">Total Amount</th>
+									<th class="product-price">Date Of Order</th>
+									<th class="add-cart ">Delete</th>
+									<th class="product_remove">Invoice</th>
+									<th class="product_remove">Order Details</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% comment %} <tr>
+									<td class="product_thumb">
+										<a href=" {% static 'javascript:void(0)' %} ">
+											<img src=" {% static 'assets/img/cart/3.jpg' %} " alt="img">
+										</a>
+									</td>
+									<td class="product_name">
+										<a href=" {% static 'javascript:void(0)' %} ">Chains Pizza</a>
+									</td>
+									<td class="product-price">$52.00</td>
+									<td class="cart-button"><a href=" {% static 'javascript:void(0)' %} ">add to cart</a></td>
+									<td class="product_remove">
+										<a href=" {% static 'javascript:void(0)' %} " style="cursor: pointer;"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr> {% endcomment %}
+								{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+                                {% if data %}
+                                {% for single_data in data %}
+								<tr>
+									<td class="order-id">{{ single_data.id }}</td>
+									<td class="order-amount">Rs.{{ single_data.Totalammount }}.00</td>
+									<td class="order-date">{{ single_data.Date }}</td>
+									 {% if not single_data.IsCancel %}
+									<td class="cart-button">
+									 <form action="/delete_order/{{ single_data.id }}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Cancel</button>
+            </form>
+									</td>
+
+									<td class="cart-button invoice"><a href="/invoice/{{ single_data.id }}">get invoice</a></td>
+									<td class="cart-button details"><a href="/orderdetails/{{ single_data.id }}">view details</a></td>
+
+									{% else %}
+                <td><span class="text-muted">Canceled</span></td>
+            {% endif %}
+
+								</tr>
+                                {% endfor %}
+                                {% endif %}
+									{% comment %} <tr>
+									<td class="product_thumb">
+										<a href="#">
+											<img src=" {% static 'assets/img/cart/3.jpg' %} " alt="img">
+										</a>
+									</td>
+									<td class="product_name">
+										<a href=" {% static 'javascript:void(0)' %} ">Japani Pasta</a>
+									</td>
+									<td class="product-price">$52.00</td>
+									<td class="cart-button"><a href="#">add to cart</a></td>
+									<td class="product_remove">
+										<a href=" {% static 'javascript:void(0)' %} " style="cursor: pointer;"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr> {% endcomment %}
+								</tbody>
+							</table>
+						</div>
+						{% comment %} <div class="button-bar pt-20 text-end">
+							<button type="submit" class="btn btn-lg">Clear Wishlist</button>
+						</div>  {% endcomment %}
+					</div>
+				</div>
+			</div>
+</div>
+<!-- footer-area -->
+<footer id="footer" class="footer-area">
+	<div class="container">
+		<div class="row pt-20">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+				<div class="footer-single">
+					<div class="ft-head">
+						<div class="logo">
+							<a href="/"><img src=" {% static 'assets/img/logo-footer.png' %} " height="150" width="280" alt="logo"></a>
+						</div>
+					</div>
+					<div class="ft-description">
+						<p>We offer a convenient solution for ordering food online through our dedicated app and
+							website. With both options, customers can easily navigate and place orders for their
+							favorite meals, providing them with flexibility and a seamless experience</p>
+					</div>
+					<div class="scoial-area">
+						<h4>Follow Us:</h4>
+						<ul>
+							<li><a href="#"><i class="fab fa-facebook-f "></i></a></li>
+							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="problem ">
+					<div class="ft-head">
+						<h3>Quick Links</h3>
+					</div>
+					<div class="footer-iteam">
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li><a href="about">About Us</a></li>
+							<li><a href="contact">Contact</a></li>
+							<li><a href="service">Services</a></li>
+							<li><a href="login">Log In</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class=" col-lg-2 col-md-6 col-sm-6">
+				<div class="problem ">
+					<div class="ft-head">
+						<h3>Categories</h3>
+					</div>
+					<div class="footer-iteam">
+						<ul>
+							<li><a href="#">Pizza</a></li>
+							<li><a href="#">Pasta</a></li>
+							<li><a href="#">Burgers</a></li>
+							<li><a href="#">French Fries</a></li>
+							<li><a href="#">Garlic bread</a></li>
+							<li><a href="#">Sandwich</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="ft-head">
+					<h3>Contact Info</h3>
+				</div>
+				<div class="footer-iteam">
+					<ul>
+						<li><a href="#">Midnight Delights,Ahmedabad</a></li>
+						<li><a href="mailto:nisargt1782@gmail.com"><span>Email:</span> info@contact.com</a></li>
+						<li><a href="tel:+916359564159"><span>Contact:</span> +91 635 956 4159</a></li>
+
+
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<div class="row row2">
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="ft-bottom-left">
+					<p>Copyright &copy;2024 MidNightDelight All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+  <!-- scroll -->
+ <div class="scroll-area">
+       <i class="fa fa-angle-up"></i>
+  </div>
+  <!-- scroll -->
+    <!-- Js File -->
+    <script src=" {% static 'assets/js/modernizr.min.js' %} "></script>
+    <script src=" {% static 'assets/js/jquery-3.5.1.min.js' %} "></script>
+    <script src=" {% static 'assets/js/popper.min.js' %} "></script>
+    <script src=" {% static 'assets/js/bootstrap.min.js' %} "></script>
+    <script src=" {% static 'assets/js/owl.carousel.min.js' %} "></script>
+    <script src=" {% static 'assets/js/jquery.waypoints.min.js' %} "></script>
+    <script src=" {% static 'assets/js/jquery.nav.min.js' %} "></script>
+    <script src=" {% static 'assets/js/wow.min.js' %} "></script>
+    <script src=" {% static 'assets/js/slick.min.js' %} "></script>
+    <script src=" {% static 'assets/js/ratin.js' %} "></script>
+    <script src=" {% static 'assets/js/jquery-ui.min.js' %} "></script>
+    <script src=" {% static 'assets/js/script.js' %} "></script>
+
+	{% comment %} <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ordersExist = {{ data.exists|yesno:"true,false" }};
+        if (!ordersExist) {
+            document.querySelectorAll('.details, .invoice').forEach(function(btn) {
+                btn.disabled = true;
+            });
+        }
+    });
+</script> {% endcomment %}
+ 
+ 
+</body>
+
+<!-- Mirrored from blackberrybd.com/foodbar/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jan 2024 14:46:22 GMT -->
+</html>

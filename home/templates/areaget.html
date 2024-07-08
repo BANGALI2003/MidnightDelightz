@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>areaGET</title>
+</head>
+<body>
+<form method="POST" action="get_area">
+    {% csrf_token %}
+    <label for="aid">Area:</label><br>
+    <input type="text" id="aid" name="area"><br>
+    <br>
+    <button type="submit">Submit!</button>
+</body>
+</html>
