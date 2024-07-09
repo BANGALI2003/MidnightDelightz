@@ -1,3 +1,0 @@
-account_sid="AC0b570a27a2379bc177379cf0d82923a5"
-auth_token="ddf7abecb2f5e41e59b248a42c370bf2"
-twillo_number=+15186384233
